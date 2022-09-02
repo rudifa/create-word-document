@@ -41,4 +41,23 @@ Error: Cannot find module 'dotenv'
 - `npm i dotenv` should fix it
 
 
+```
+Uncaught Error: [MobX] Cannot apply 'observable' to 'Function@1.documents': Field not found.
+    at die (errors.ts:84:1)
+    at ObservableObjectAdministration.make_ (observableobject.ts:259:1)
+    at makeObservable.ts:43:1
+    at Array.forEach (<anonymous>)
+    at makeObservable (makeObservable.ts:43:1)
+    at ./src/store.js (store.js:9:1)
+    at options.factory (react refresh:6:1)
+    at __webpack_require__ (bootstrap:24:1)
+    at fn (hot module replacement:62:1)
+    at ./src/App.js (bundle.js:21:64)
+content.js:6 
+``` 
+- fixed using `makeAutoObservable` in `class DocumentStore`
  
+```
+GET http://localhost:3000/document 404 (Not Found)
+```
+- tried `mkdir backend/document`, did not fix the problem
