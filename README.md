@@ -14,4 +14,31 @@ ERROR: Error reading "config/config.js". Error: SyntaxError: Unexpected token ':
 
 ```
 - renamed file to `config.json`, fixed.
+
+```
+backend % npm start                                                                      [main L|✔]
+
+> backend@0.0.0 start
+> nodemon --exec npm run babel-node --  ./bin/www
+
+[nodemon] 2.0.19
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `npm run babel-node ./bin/www`
+
+> backend@0.0.0 babel-node
+> babel-node
+
+node:internal/modules/cjs/loader:936
+  throw err;
+  ^
+
+Error: Cannot find module 'dotenv'
+
+```
+
+- `npm i dotenv` should fix it
+
+
  
