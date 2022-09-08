@@ -61,3 +61,38 @@ content.js:6
 GET http://localhost:3000/document 404 (Not Found)
 ```
 - tried `mkdir backend/document`, did not fix the problem
+
+### debugging
+
+Tried to debug the backend with `launch.json`
+
+```
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Backend",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceFolder}/backend",
+      "runtimeExecutable": "/usr/local/bin/npm",
+      "runtimeArgs": [
+        "run",
+        "babel-node",
+        "--",
+        "./bin/www"
+      ],
+      "program": "${workspaceFolder}/backend/app.js",
+    }
+  ]
+}
+```
+This does launch the backend server, but debugger is not connected.
+
