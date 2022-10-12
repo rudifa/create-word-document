@@ -1,6 +1,14 @@
 
 [How to Create Word Documents with Node.js](https://medium.com/swlh/how-to-create-word-documents-with-node-js-4f74d6d4662c)
 
+### start
+
+In separate terminal windows:
+- `cd backend && npm start`
+- `cd frontend && npm start`
+
+TODO
+- elaborate parallel start, including cleanup of previous processes
 
 ### errors
 
