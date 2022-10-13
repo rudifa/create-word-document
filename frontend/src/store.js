@@ -1,14 +1,11 @@
-import {observable, action, makeObservable, makeAutoObservable} from 'mobx';
+import {makeAutoObservable} from 'mobx';
 class DocumentStore {
   constructor() {
     this.documents = [];
-    makeAutoObservable(this, {
-      documents: observable,
-      setDocuments: action,
-    });
+    makeAutoObservable(this);
   }
 
-  setDocuments(documents) {
+  setDocuments = (documents) => {
     this.documents = documents;
   }
 }
