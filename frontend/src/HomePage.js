@@ -1,64 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import DocumentForm from "./DocumentForm";
-import Modal from "react-bootstrap/Modal";
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
-import { observer } from "mobx-react";
-import { getDocuments, deleteDocument, generateDocument, APIURL } from "./request";
-function HomePage({ documentStore, history }) {
+import React, {useState, useEffect} from 'react';
+import {withRouter} from 'react-router-dom';
+import DocumentForm from './DocumentForm';
+import Modal from 'react-bootstrap/Modal';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
+import {observer} from 'mobx-react';
+import {
+  getDocuments,
+  deleteDocument,
+  generateDocument,
+  APIURL,
+} from './request';
+function HomePage({documentStore, history}) {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [initialized, setInitialized] = useState(false);
   const [doc, setDoc] = useState([]);
-const openAddTemplateModal = () => {
+  const openAddTemplateModal = () => {
     setOpenAddModal(true);
   };
-const closeAddModal = () => {
+  const closeAddModal = () => {
     setOpenAddModal(false);
     setOpenEditModal(false);
   };
-const cancelAddModal = () => {
+  const cancelAddModal = () => {
     setOpenAddModal(false);
   };
-const cancelEditModal = () => {
+  const cancelEditModal = () => {
     setOpenEditModal(false);
   };
-const getAllDocuments = async () => {
+  const getAllDocuments = async () => {
     const response = await getDocuments();
     documentStore.setDocuments(response.data);
     setInitialized(true);
   };
-const editDocument = d => {
+  const editDocument = (d) => {
     setDoc(d);
     setOpenEditModal(true);
   };
-const onSave = () => {
+  const onSave = () => {
     cancelAddModal();
     cancelEditModal();
   };
-const deleteSingleDocument = async id => {
+  const deleteSingleDocument = async (id) => {
     await deleteDocument(id);
     getAllDocuments();
   };
-const generateSingleDocument = async id => {
+  const generateSingleDocument = async (id) => {
     await generateDocument(id);
-    alert("Document Generated");
+    alert('Document Generated');
     getAllDocuments();
   };
-useEffect(() => {
+  useEffect(() => {
     if (!initialized) {
       getAllDocuments();
     }
   });
-return (
+  return (
     <div className="page">
       <h1 className="text-center">Documents</h1>
       <ButtonToolbar onClick={openAddTemplateModal}>
         <Button variant="primary">Add Document</Button>
       </ButtonToolbar>
-<Modal show={openAddModal} onHide={closeAddModal}>
+      <Modal show={openAddModal} onHide={closeAddModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add Document</Modal.Title>
         </Modal.Header>
@@ -70,7 +75,7 @@ return (
           />
         </Modal.Body>
       </Modal>
-<Modal show={openEditModal} onHide={cancelEditModal}>
+      <Modal show={openEditModal} onHide={cancelEditModal}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Document</Modal.Title>
         </Modal.Header>
@@ -96,7 +101,7 @@ return (
           </tr>
         </thead>
         <tbody>
-          {documentStore.documents.map(d => {
+          {documentStore.documents.map((d) => {
             return (
               <tr key={d.id}>
                 <td>{d.name}</td>
@@ -108,24 +113,21 @@ return (
                 <td>
                   <Button
                     variant="outline-primary"
-                    onClick={generateSingleDocument.bind(this, d.id)}
-                  >
+                    onClick={generateSingleDocument.bind(this, d.id)}>
                     Generate Document
                   </Button>
                 </td>
                 <td>
                   <Button
                     variant="outline-primary"
-                    onClick={editDocument.bind(this, d)}
-                  >
+                    onClick={editDocument.bind(this, d)}>
                     Edit
                   </Button>
                 </td>
                 <td>
                   <Button
                     variant="outline-primary"
-                    onClick={deleteSingleDocument.bind(this, d.id)}
-                  >
+                    onClick={deleteSingleDocument.bind(this, d.id)}>
                     Delete
                   </Button>
                 </td>
