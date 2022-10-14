@@ -1,7 +1,7 @@
 
 [How to Create Word Documents with Node.js](https://medium.com/swlh/how-to-create-word-documents-with-node-js-4f74d6d4662c)
 
-### start
+## start
 
 In separate terminal windows:
 - `cd backend && npm start`
@@ -10,7 +10,9 @@ In separate terminal windows:
 TODO
 - elaborate parallel start, including cleanup of previous processes
 
-### errors
+## errors
+
+1.
 
 ```
 backend % npx sequelize-cli db:migrate                                                            [main L|…3]
@@ -22,6 +24,8 @@ ERROR: Error reading "config/config.js". Error: SyntaxError: Unexpected token ':
 
 ```
 - renamed file to `config.json`, fixed.
+
+2.
 
 ```
 backend % npm start                                                                      [main L|✔]
@@ -46,9 +50,9 @@ Error: Cannot find module 'dotenv'
 
 ```
 
-- `npm i dotenv` should fix it
+- `npm i dotenv` fixed it
 
-
+3.
 ```
 Uncaught Error: [MobX] Cannot apply 'observable' to 'Function@1.documents': Field not found.
     at die (errors.ts:84:1)
@@ -65,14 +69,54 @@ content.js:6
 ``` 
 - fixed using `makeAutoObservable` in `class DocumentStore`
  
-```
-GET http://localhost:3000/document 404 (Not Found)
-```
-- tried `mkdir backend/document`, did not fix the problem
+4.
 
-### debugging
+```
+react-jsx-dev-runtime.development.js:87 Warning: React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
 
-Tried to debug the backend with `launch.json`
+Check your code at DocumentForm.js:52.
+
+...
+          <Form noValidate onSubmit={handleSubmit}>
+            <Form.Row> // line 52
+
+```
+
+- diagnosed by adding a log that showed `undefined` for `Form.Row`
+```
+console.log(`DocumentForm.js: Form: ${typeof Form}, Form.Row: ${typeof Form.Row}, CKEditor: ${typeof CKEditor}`);
+
+```
+
+- fixed by importing and using Row (following a hint on StackOverflow)
+
+```
+import Row from "react-bootstrap/Row";
+...
+          <Form noValidate onSubmit={handleSubmit}>
+            <Row>
+```
+
+5.
+
+Diagnostic similar to above in 4.
+
+Replaced
+
+```
+import CKEditor from "@ckeditor/ckeditor5-react";
+```
+by
+
+```
+import {CKEditor} from "@ckeditor/ckeditor5-react";
+```
+
+following the example in [CKEditor 5 docs](https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/frameworks/react.html)
+
+## debugging
+
+1. Tried to debug the backend with `launch.json`
 
 ```
 {
@@ -103,4 +147,19 @@ Tried to debug the backend with `launch.json`
 }
 ```
 This does launch the backend server, but debugger is not connected.
+
+2. Use console.log in backend
+
+This works, prints to the backend termial window.
+
+3. Use debug in backend
+
+See backend/bin/www.
+
+Did not try it, needs launching with an env variable.
+
+4. Use console.log in frontend
+
+This works, prints to the devtools console.
+
 
