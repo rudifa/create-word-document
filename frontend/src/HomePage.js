@@ -12,7 +12,9 @@ import {
   generateDocument,
   APIURL,
 } from './request';
-console.log(`HomePage.js: APIURL = ${APIURL}`);
+console.log(
+  `HomePage.js: APIURL = ${APIURL}, Modal = ${Modal}, Button = ${Button}`
+);
 function HomePage({documentStore, history}) {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -62,8 +64,10 @@ function HomePage({documentStore, history}) {
   return (
     <div className="page">
       <h1 className="text-center">Documents</h1>
-      <ButtonToolbar onClick={openAddTemplateModal}>
-        <Button variant="primary">Add Document</Button>
+      <ButtonToolbar>
+        <Button variant="primary" onClick={openAddTemplateModal}>
+          Add Document
+        </Button>
       </ButtonToolbar>
       <Modal show={openAddModal} onHide={closeAddModal}>
         <Modal.Header closeButton>
@@ -108,7 +112,10 @@ function HomePage({documentStore, history}) {
               <tr key={d.id}>
                 <td>{d.name}</td>
                 <td>
-                  <a href={`${APIURL}/${d.documentPath}`} target="_blank" rel="noreferrer">
+                  <a
+                    href={`${APIURL}/${d.documentPath}`}
+                    target="_blank"
+                    rel="noreferrer">
                     Open
                   </a>
                 </td>

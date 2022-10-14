@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
+// code from https://www.pluralsight.com/guides/how-to-trigger-modal-for-react-bootstrap
+
 function ModalDemo() {
   const [showModal, setShow] = useState(false);
 

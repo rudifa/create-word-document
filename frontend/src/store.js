@@ -10,8 +10,5 @@ class DocumentStore {
   }
 }
 
-// DocumentStore = makeAutoObservable(DocumentStore, {
-//   // documents: observable,
-//   // setDocuments: action,
-// });
+
 export {DocumentStore};
