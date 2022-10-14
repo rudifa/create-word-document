@@ -12,12 +12,14 @@ import {
   generateDocument,
   APIURL,
 } from './request';
+console.log(`HomePage.js: APIURL = ${APIURL}`);
 function HomePage({documentStore, history}) {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [initialized, setInitialized] = useState(false);
   const [doc, setDoc] = useState([]);
   const openAddTemplateModal = () => {
+    console.log(`openAddTemplateModal`);
     setOpenAddModal(true);
   };
   const closeAddModal = () => {
@@ -106,7 +108,7 @@ function HomePage({documentStore, history}) {
               <tr key={d.id}>
                 <td>{d.name}</td>
                 <td>
-                  <a href={`${APIURL}/${d.documentPath}`} target="_blank">
+                  <a href={`${APIURL}/${d.documentPath}`} target="_blank" rel="noreferrer">
                     Open
                   </a>
                 </td>
