@@ -2,6 +2,7 @@ import React from "react";
 import * as yup from "yup";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { observer } from "mobx-react";
 import { Formik, Field } from "formik";
@@ -11,6 +12,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 const schema = yup.object({
   name: yup.string().required("Name is required")
 });
+console.log(`DocumentForm.js: Form: ${Form}, Row: ${Row}, CKEditor: ${CKEditor}`);
 function DocumentForm({ documentStore, edit, onSave, doc }) {
   const [content, setContent] = React.useState("");
   const [dirty, setDirty] = React.useState(false);
@@ -49,7 +51,7 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
           errors
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Form.Row>
+            <Row>
               <Form.Group as={Col} md="12" controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
@@ -64,8 +66,8 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
                   {errors.name}
                 </Form.Control.Feedback>
               </Form.Group>
-            </Form.Row>
-            <Form.Row>
+            </Row>
+            <Row>
               <Form.Group as={Col} md="12" controlId="content">
                 <Form.Label>Content</Form.Label>
                 <CKEditor
@@ -92,7 +94,7 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
                   {dirty && !content ? "Content is required" : null}
                 </div>
               </Form.Group>
-            </Form.Row>
+            </Row>
             <Button type="submit" style={{ marginRight: 10 }}>
               Save
             </Button>
