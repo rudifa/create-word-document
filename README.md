@@ -114,6 +114,21 @@ import {CKEditor} from "@ckeditor/ckeditor5-react";
 
 following the example in [CKEditor 5 docs](https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/frameworks/react.html)
 
+6. 
+
+```
+Warning: Failed prop type: The "onInit" property is not supported anymore by the CKEditor component. Use the "onReady" property instead.
+```
+Prevents Save from working. Fixed as suggested in the diagnostic.
+
+7. `DocumentForm`: `Save` works, `Cancel` has no effect.
+
+OPEN
+
+8. `Generate Document` works (creates a `.docx` file in `backend/files`), but text is missing when opened in Pages.
+
+OPEN
+
 ## debugging
 
 1. Tried to debug the backend with `launch.json`

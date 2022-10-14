@@ -21,3 +21,5 @@ node_modules
 
 # backend
 /backend/development.db
+/backend/files/*.docx
+

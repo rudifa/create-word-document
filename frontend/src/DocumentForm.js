@@ -73,7 +73,7 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
                 <CKEditor
                   editor={ClassicEditor}
                   data={content || ""}
-                  onInit={editor => {
+                  onReady={editor => {
                     if (edit) {
                       setContent(doc.document);
                     }
