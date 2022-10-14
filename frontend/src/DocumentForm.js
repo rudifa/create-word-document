@@ -7,12 +7,12 @@ import Button from "react-bootstrap/Button";
 import { observer } from "mobx-react";
 import { Formik, Field } from "formik";
 import { addDocument, editDocument, getDocuments, APIURL } from "./request";
-import CKEditor from "@ckeditor/ckeditor5-react";
+import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 const schema = yup.object({
   name: yup.string().required("Name is required")
 });
-console.log(`DocumentForm.js: Form: ${Form}, Row: ${Row}, CKEditor: ${CKEditor}`);
+console.log(`DocumentForm.js: Form: ${typeof Form}, Row: ${typeof Row}, CKEditor: ${typeof CKEditor}`);
 function DocumentForm({ documentStore, edit, onSave, doc }) {
   const [content, setContent] = React.useState("");
   const [dirty, setDirty] = React.useState(false);
