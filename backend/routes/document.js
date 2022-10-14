@@ -1,8 +1,8 @@
-var express = require("express");
+let express = require("express");
 const models = require("../models");
-var multer = require("multer");
+let multer = require("multer");
 const fs = require("fs");
-var router = express.Router();
+let router = express.Router();
 const htmlDocx = require("html-docx-js");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
