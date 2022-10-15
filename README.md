@@ -1,16 +1,17 @@
 
 [How to Create Word Documents with Node.js](https://medium.com/swlh/how-to-create-word-documents-with-node-js-4f74d6d4662c)
 
-## start
+## START
 
 In separate terminal windows:
 - `cd backend && npm start`
 - `cd frontend && npm start`
 
-TODO
+## TODO
 - elaborate parallel start, including cleanup of previous processes
+- in frontend `DocumentForm.js`: find a way to close the Modal dialog on Cancel.
 
-## errors
+## ERRORS
 
 1.
 
@@ -129,7 +130,7 @@ OPEN
 
 OPEN
 
-## debugging
+## DEBUGGING
 
 1. Tried to debug the backend with `launch.json`
 

@@ -1,27 +1,29 @@
-import React from "react";
-import * as yup from "yup";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import { observer } from "mobx-react";
-import { Formik, Field } from "formik";
-import { addDocument, editDocument, getDocuments, APIURL } from "./request";
-import {CKEditor} from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import React from 'react';
+import * as yup from 'yup';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import {observer} from 'mobx-react';
+import {Formik, Field} from 'formik';
+import {addDocument, editDocument, getDocuments, APIURL} from './request';
+import {CKEditor} from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const schema = yup.object({
-  name: yup.string().required("Name is required")
+  name: yup.string().required('Name is required'),
 });
-console.log(`DocumentForm.js: Form: ${typeof Form}, Row: ${typeof Row}, CKEditor: ${typeof CKEditor}`);
-function DocumentForm({ documentStore, edit, onSave, doc }) {
-  const [content, setContent] = React.useState("");
+console.log(
+  `DocumentForm.js: Form: ${typeof Form}, Row: ${typeof Row}, CKEditor: ${typeof CKEditor}`
+);
+function DocumentForm({documentStore, edit, onSave, doc, cancelModal}) {
+  const [content, setContent] = React.useState('');
   const [dirty, setDirty] = React.useState(false);
-  const handleSubmit = async evt => {
+  const handleSubmit = async (evt) => {
     const isValid = await schema.validate(evt);
     if (!isValid || !content) {
       return;
     }
-    const data = { ...evt, document: content };
+    const data = {...evt, document: content};
     if (!edit) {
       await addDocument(data);
     } else {
@@ -39,8 +41,7 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
       <Formik
         validationSchema={schema}
         onSubmit={handleSubmit}
-        initialValues={edit ? doc : {}}
-      >
+        initialValues={edit ? doc : {}}>
         {({
           handleSubmit,
           handleChange,
@@ -48,7 +49,7 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
           values,
           touched,
           isInvalid,
-          errors
+          errors,
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Row>
@@ -58,7 +59,7 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
                   type="text"
                   name="name"
                   placeholder="Name"
-                  value={values.name || ""}
+                  value={values.name || ''}
                   onChange={handleChange}
                   isInvalid={touched.name && errors.name}
                 />
@@ -72,8 +73,8 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
                 <Form.Label>Content</Form.Label>
                 <CKEditor
                   editor={ClassicEditor}
-                  data={content || ""}
-                  onReady={editor => {
+                  data={content || ''}
+                  onReady={(editor) => {
                     if (edit) {
                       setContent(doc.document);
                     }
@@ -85,20 +86,19 @@ function DocumentForm({ documentStore, edit, onSave, doc }) {
                   }}
                   config={{
                     ckfinder: {
-                      uploadUrl:
-                        `${APIURL}/document/uploadImage`
-                    }
+                      uploadUrl: `${APIURL}/document/uploadImage`,
+                    },
                   }}
                 />
                 <div className="content-invalid-feedback">
-                  {dirty && !content ? "Content is required" : null}
+                  {dirty && !content ? 'Content is required' : null}
                 </div>
               </Form.Group>
             </Row>
-            <Button type="submit" style={{ marginRight: 10 }}>
+            <Button type="submit" style={{marginRight: 10}}>
               Save
             </Button>
-            <Button type="button">Cancel</Button>
+            <Button type="button" onClick={() => {console.log('onClick')}}>Cancel</Button>
           </Form>
         )}
       </Formik>
