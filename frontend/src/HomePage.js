@@ -66,7 +66,7 @@ function HomePage({documentStore, history}) {
       <h1 className="text-center">Documents</h1>
       <ButtonToolbar>
         <Button variant="primary" onClick={openAddTemplateModal}>
-          Add Document
+          New Document
         </Button>
       </ButtonToolbar>
       <Modal show={openAddModal} onHide={closeAddModal}>
@@ -99,10 +99,10 @@ function HomePage({documentStore, history}) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Document</th>
-            <th>Generate Document</th>
+            <th>Document Name</th>
             <th>Edit</th>
+            <th>Generate</th>
+            <th>Download</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -112,26 +112,27 @@ function HomePage({documentStore, history}) {
               <tr key={d.id}>
                 <td>{d.name}</td>
                 <td>
-                  <a
-                    href={`${APIURL}/${d.documentPath}`}
-                    target="_blank"
-                    rel="noreferrer">
-                    Open
-                  </a>
-                </td>
-                <td>
-                  <Button
-                    variant="outline-primary"
-                    onClick={generateSingleDocument.bind(this, d.id)}>
-                    Generate Document
-                  </Button>
-                </td>
-                <td>
                   <Button
                     variant="outline-primary"
                     onClick={editDocument.bind(this, d)}>
                     Edit
                   </Button>
+                </td>
+                <td>
+                  <Button
+                    variant="outline-primary"
+                    onClick={generateSingleDocument.bind(this, d.id)}>
+                    Generate docx
+                  </Button>
+                </td>
+
+                <td>
+                  <a
+                    href={`${APIURL}/${d.documentPath}`}
+                    target="_blank"
+                    rel="noreferrer">
+                    Download docx
+                  </a>
                 </td>
                 <td>
                   <Button
