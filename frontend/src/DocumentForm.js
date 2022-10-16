@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import {observer} from 'mobx-react';
-import {Formik, Field} from 'formik';
+import {Formik} from 'formik';
 import {addDocument, editDocument, getDocuments, APIURL} from './request';
 import {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';

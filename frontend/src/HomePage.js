@@ -69,7 +69,7 @@ function HomePage({documentStore, history}) {
           New Document
         </Button>
       </ButtonToolbar>
-      <Modal show={openAddModal} onHide={closeAddModal}>
+      <Modal size='xl' show={openAddModal} onHide={closeAddModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add Document</Modal.Title>
         </Modal.Header>
@@ -81,7 +81,7 @@ function HomePage({documentStore, history}) {
           />
         </Modal.Body>
       </Modal>
-      <Modal show={openEditModal} onHide={cancelEditModal}>
+      <Modal size='xl' show={openEditModal} onHide={cancelEditModal}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Document</Modal.Title>
         </Modal.Header>

@@ -13,13 +13,13 @@ function ModalDemo() {
     <>
       <div
         className="d-flex align-items-center justify-content-center"
-        style={{ height: "100vh" }}
+        style={{ height: "10vh", background: "#eee", border: "1px solid gray"}}
       >
         <Button variant="primary" onClick={handleShow}>
           Launch Modal Demo
         </Button>
       </div>
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal size='xl' show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
