@@ -98,7 +98,7 @@ function DocumentForm({documentStore, edit, onSave, doc, cancelModal}) {
             <Button type="submit" style={{marginRight: 10}}>
               Save
             </Button>
-            <Button type="button" onClick={() => {console.log('onClick')}}>Cancel</Button>
+            <Button type="button" onClick={() => {cancelModal()}}>Cancel</Button>
           </Form>
         )}
       </Formik>

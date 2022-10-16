@@ -19,9 +19,11 @@ In separate terminal windows:
 ## ERRORS
 
 8. `Generate Document` works (creates a `.docx` file in `backend/files`), but text is missing when opened in Pages.
-   Fixed by switching to html-to-docx package.
+- fixed by switching to html-to-docx package.
 
-> 7. OPEN `DocumentForm`: `Save` works, `Cancel` has no effect.
+7. `DocumentForm`: `Save` works, `Cancel` has no effect.
+
+- fixed, added onClick to the Cancel Button.
 
 6. "onInit" property is not supported anymore by the CKEditor
 
@@ -29,7 +31,7 @@ In separate terminal windows:
 Warning: Failed prop type: The "onInit" property is not supported anymore by the CKEditor component. Use the "onReady" property instead.
 ```
 
-Prevents Save from working. Fixed as suggested in the diagnostic.
+    Prevents Save from working. Fixed as suggested in the diagnostic.
 
 5. import CKEditor failed
 
@@ -69,7 +71,7 @@ console.log(`DocumentForm.js: Form: ${typeof Form}, Form.Row: ${typeof Form.Row}
 
 ```
 
-- Fixed by importing and using Row (following a hint on StackOverflow)
+    Fixed by importing and using Row (following a hint on StackOverflow)
 
 ```
 import Row from "react-bootstrap/Row";
@@ -122,7 +124,7 @@ Error: Cannot find module 'dotenv'
 
 ```
 
-- Fixed: `npm i dotenv`
+- fixed: `npm i dotenv`
 
 1. Unexpected token ':'
 
@@ -135,7 +137,7 @@ ERROR: Error reading "config/config.js". Error: SyntaxError: Unexpected token ':
 
 ```
 
-- Fixed: renamed file to `config.json`.
+- fixed: renamed file to `config.json`.
 
 ## DEBUGGING
 
