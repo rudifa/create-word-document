@@ -1,19 +1,31 @@
-[How to Create Word Documents with Node.js](https://medium.com/swlh/how-to-create-word-documents-with-node-js-4f74d6d4662c)
+# A minimal .docx document editor
+
+Code extracted from the article [How to Create Word Documents with Node.js](https://medium.com/swlh/how-to-create-word-documents-with-node-js-4f74d6d4662c)
 
 ## START
 
-In separate terminal windows:
+In a terminal window open in the root directory:
+- `npm start` # starts both in parallel
+
+or, in separate terminal windows or tabs:
 
 - `cd backend && npm start`
 - `cd frontend && npm start`
 
+Both processes run on the localhost.
+
+Frontend presents the editor UI.
+
+Backend handles the document contents storage and conversion to .docx.
+
 ## DONE
 
+- fixed minor package update and behavior problems 
 - replaced `html-docx-js` by `html-to-docx` (newer, actively maintained)
+- touched up the UI
 
 ## TODO
 
-- elaborate parallel start, including cleanup of previous processes
 - in frontend `DocumentForm.js`: find a way to close the Modal dialog on Cancel.
 
 ## ERRORS

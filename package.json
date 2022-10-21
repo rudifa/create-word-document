@@ -1,0 +1,15 @@
+{
+  "name": "create-word-document",
+  "version": "0.1.0",
+  "description": "create word document",
+  "author": "Rudi Farkas",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "run-p start:backend start:frontend",
+    "start:backend": "pushd backend && npm run start",
+    "start:frontend": "pushd frontend && npm run start"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
